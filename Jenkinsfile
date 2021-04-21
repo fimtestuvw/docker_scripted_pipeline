@@ -53,7 +53,7 @@ pipeline {
                             println("${BUILD_ID}")
                             println("${JOB_NAME}-Push")
                             println('---------')
-                            dockerImage.push('${BUILD-ID}')
+                            dockerImage.push('${BUILD_ID}')
                         }
                     }
                 }
