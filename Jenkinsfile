@@ -50,6 +50,7 @@ pipeline {
                             println('------')
                             println('${env.BUILD_ID}')
                             println('${BUILD_ID}')
+                            println('${JOB_NAME}-Push')
                             println('---------')
                             dockerImage.push('${BUILD-ID}')
                         }
