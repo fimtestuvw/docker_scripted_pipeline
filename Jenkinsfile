@@ -22,8 +22,8 @@ pipeline {
                     // GIT_COMMIT=e40004c967ac6f8a624e9b2b389fe55b6d43ef5a,
                     // GIT_PREVIOUS_COMMIT=6dc52a75f77864eb5c25c855d5bdb41c8f6eb1be,
                     //  GIT_URL=https://github.com/fimtestuvw/docker_scripted_pipeline}
-                    echo 'BRANCH_NAME={env.BRANCH_NAME}'
-                    echo 'BRANCH_NAME={env.BUILD_ID}'
+                    echo 'BRANCH_NAME=${env.BRANCH_NAME}'
+                    echo 'BRANCH_NAME=${env.BUILD_ID}'
 
                     dockerImage = docker.build("myimage:${env.BUILD_ID}",
                         "--label \"GIT_COMMIT=${env.GIT_COMMIT}\""
