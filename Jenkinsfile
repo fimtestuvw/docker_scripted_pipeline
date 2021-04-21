@@ -28,7 +28,7 @@ pipeline {
                     print("env.BRANCH_NAME=${env.BRANCH_NAME}")
                     println("env.BUILD=${env.BUILD_ID}")
 
-                    dockerImage = docker.build("myimage:${env.BUILD_ID}",
+                    dockerImage = docker.build("my-docker-local/myimage:${env.BUILD_ID}",
                         "--label \"GIT_COMMIT=${env.GIT_COMMIT}\""
                         + " --build-arg MY_ARG=myArg"
                         + " ."
@@ -46,7 +46,7 @@ pipeline {
                 lock("${JOB_NAME}-Push") {
                     script {
                         docker.withRegistry('https://auditsg.jfrog.io') {
-                            sh 'docker login -u fimtestxyz@gmail.com -p M0t0r0la@@ https://auditsg.jfrog.io/my-docker-local'
+                            sh 'docker login -u fimtestxyz@gmail.com -p M0t0r0la@@ https://auditsg.jfrog.io'
                             dockerImage.push('latest')
                         }
                     }
