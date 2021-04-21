@@ -37,7 +37,10 @@ pipeline {
             }
         }
         stage('Push to docker repository') {
-            when { env.BRANCH_NAME 'master' }
+            when {
+                expression {env.BRANCH_NAME == 'master'}
+
+            }
             // options { timeout(time: 5, unit: 'MINUTES') }
             steps {
                 lock("${JOB_NAME}-Push") {
