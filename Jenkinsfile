@@ -23,7 +23,7 @@ pipeline {
                     // GIT_PREVIOUS_COMMIT=6dc52a75f77864eb5c25c855d5bdb41c8f6eb1be,
                     //  GIT_URL=https://github.com/fimtestuvw/docker_scripted_pipeline}
 
-                    // echo 'BRANCH_NAME=${env.BRANCH_NAME}' //this one just print out the whole string : (
+                    // echo 'BRANCH_NAME=${env.BRANCH_NAME}' //this one just print out the whole string :
                     // echo 'BRANCH_NAME=${env.BUILD_ID}'
                     print("env.BRANCH_NAME=${env.BRANCH_NAME}")
                     println("env.BUILD=${env.BUILD_ID}")
@@ -36,18 +36,18 @@ pipeline {
                 }
             }
         }
-        // stage('Push to docker repository') {
-        //     when { branch 'master' }
-        //     options { timeout(time: 5, unit: 'MINUTES') }
-        //     steps {
-        //         lock("${JOB_NAME}-Push") {
-        //             script {
-        //                 docker.withRegistry('https://myrepo:5000', 'docker_registry') {
-        //                     dockerImage.push('latest')
-        //                 }
-        //             }
-        //             milestone 30
-        //         }
-        //     }
+        stage('Push to docker repository') {
+            when { branch 'master' }
+            // options { timeout(time: 5, unit: 'MINUTES') }
+            steps {
+                lock("${JOB_NAME}-Push") {
+                    script {
+                        docker.withRegistry('https://auditsg.jfrog.io', 'my-docker-local') {
+                            dockerImage.push('latest')
+                        }
+                    }
+                    milestone 30
+                }
+            }
     }
 }
