@@ -48,7 +48,8 @@ pipeline {
                         docker.withRegistry('https://auditsg.jfrog.io') {
                             sh 'docker login -u fimtestxyz@gmail.com -p M0t0r0la@@ https://auditsg.jfrog.io'
                             println('${env.BUILD_ID}')
-                            dockerImage.push('master')
+                            println('${BUILD_ID}')
+                            dockerImage.push('${BUILD-ID}')
                         }
                     }
                 }
