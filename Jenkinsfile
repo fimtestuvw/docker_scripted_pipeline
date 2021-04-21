@@ -45,7 +45,7 @@ pipeline {
             steps {
                 lock("${JOB_NAME}-Push") {
                     script {
-                        docker.withRegistry('https://auditsg.jfrog.io', 'my-docker-local') {
+                        docker.withRegistry('https://auditsg.jfrog.io') {
                             sh 'docker login -u fimtestxyz@gmail.com -p M0t0r0la@@ https://auditsg.jfrog.io'
                             dockerImage.push('latest')
                         }
