@@ -48,7 +48,7 @@ pipeline {
                         docker.withRegistry('https://auditsg.jfrog.io') {
                             sh 'docker login -u fimtestxyz@gmail.com -p M0t0r0la@@ https://auditsg.jfrog.io'
                             println('------')
-                            sh 'printenv'
+                            sh 'printenv | sort'
                             println("${env.BUILD_ID}")
                             println("${BUILD_ID}")
                             println("${JOB_NAME}-Push")
