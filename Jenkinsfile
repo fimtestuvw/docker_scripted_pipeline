@@ -26,7 +26,7 @@ pipeline {
                     // echo 'BRANCH_NAME=${env.BRANCH_NAME}' //this one just print out the whole string :
                     // echo 'BRANCH_NAME=${env.BUILD_ID}'
                     print("env.BRANCH_NAME=${env.BRANCH_NAME}")
-                    println("env.BUILD=${env.BUILD_ID}")
+                    println("env.BUILD_ID=${env.BUILD_ID}")
 
                     dockerImage = docker.build("my-docker-local/myimage:${env.BUILD_ID}",
                         "--label \"GIT_COMMIT=${env.GIT_COMMIT}\""
@@ -47,8 +47,10 @@ pipeline {
                     script {
                         docker.withRegistry('https://auditsg.jfrog.io') {
                             sh 'docker login -u fimtestxyz@gmail.com -p M0t0r0la@@ https://auditsg.jfrog.io'
+                            println('------')
                             println('${env.BUILD_ID}')
                             println('${BUILD_ID}')
+                            println('---------')
                             dockerImage.push('${BUILD-ID}')
                         }
                     }
