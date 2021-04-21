@@ -38,7 +38,7 @@ pipeline {
         }
         stage('Push to docker repository') {
             when {
-                expression {env.BRANCH_NAME == 'master'}
+                expression {env.BRANCH_NAME == 'main'}
 
             }
             // options { timeout(time: 5, unit: 'MINUTES') }
