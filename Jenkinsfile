@@ -23,10 +23,10 @@ pipeline {
                     // GIT_PREVIOUS_COMMIT=6dc52a75f77864eb5c25c855d5bdb41c8f6eb1be,
                     //  GIT_URL=https://github.com/fimtestuvw/docker_scripted_pipeline}
 
-                    // echo 'BRANCH_NAME=${env.BRANCH_NAME}'
+                    // echo 'BRANCH_NAME=${env.BRANCH_NAME}' //this one just print out the whole string : (
                     // echo 'BRANCH_NAME=${env.BUILD_ID}'
-                    echo BRANCH_NAME=${env.BRANCH_NAME}
-                    echo BRANCH_NAME=${env.BUILD_ID}
+                    print("env.BRANCH_NAME=${env.BRANCH_NAME}")
+                    println("env.BUILD=${env.BUILD_ID}")
 
                     dockerImage = docker.build("myimage:${env.BUILD_ID}",
                         "--label \"GIT_COMMIT=${env.GIT_COMMIT}\""
