@@ -49,11 +49,11 @@ pipeline {
                             sh 'docker login -u fimtestxyz@gmail.com -p M0t0r0la@@ https://auditsg.jfrog.io'
                             println('------')
                             sh 'printenv'
-                            println('${env.BUILD_ID}')
-                            println('${BUILD_ID}')
-                            println('${JOB_NAME}-Push')
+                            println("${env.BUILD_ID}")
+                            println("${BUILD_ID}")
+                            println("${JOB_NAME}-Push")
                             println('---------')
-                            dockerImage.push('${BUILD-ID}')
+                            dockerImage.push("${BUILD-ID}")
                         }
                     }
                 }
