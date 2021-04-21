@@ -45,7 +45,7 @@ pipeline {
             steps {
                 lock("${JOB_NAME}-Push") {
                     script {
-                        docker.withRegistry('https://myrepo:5000', 'docker_registry') {
+                        docker.withRegistry('https://auditsg.jfrog.io', 'my-docker-local') {
                             dockerImage.push('latest')
                         }
                     }
